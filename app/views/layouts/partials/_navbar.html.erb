@@ -1,0 +1,41 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <ul class="nav pull-left">
+      <a class="brand" href="<%=root_url%>">
+        <div class="span2"><%= image_tag("bytemap.png", :alt => "bytemap") %>
+        </div>
+      </a>
+    </ul>
+
+    <div class="nav-collapse collapse">
+      <div class="tagline"> feeding MIT, one byte at a time</div>
+
+      <ul class="nav">
+      </ul>
+
+      <ul class="nav pull-right">
+        
+        <% if signed_in? %>
+          <li class="username_navbar">Welcome <%= current_user.name %></li>
+          <li class="link_navbar"><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+          <li class="link_navbar"><%= link_to "Sign Out", signout_path, method: "delete" %></li>
+        <% else %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In
+            <strong class="caret"></strong></a>
+            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+              <%= render :partial => 'sessions/newform'%>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign Up<strong class="caret"></strong></a>
+            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+              <%= render :partial => 'users/newform', :locals => {:@user => User.new}%>
+            </div>
+          </li>
+        <% end %>
+        <li class="link_navbar"><%= link_to "About", about_about_path%></li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<%= form_for(:session, url: sessions_path) do |f| %>
+
+  <%= f.text_field :email , :placeholder => "Email Address"%>
+
+  <%= f.password_field :password , :placeholder => "Password"%>
+  </br>
+
+  <%= f.submit "Sign in", class: "btn btn-primary" %>
+
+  <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  <p><%= link_to "Forgot Your Password?", new_password_reset_path %></p>
+<% end %>

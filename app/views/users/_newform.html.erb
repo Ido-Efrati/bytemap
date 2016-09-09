@@ -1,0 +1,31 @@
+<%= form_for(@user) do |f| %>
+  <span id="flash" style="display:inline;"><%= raw render(:partial => 'layouts/partials/flash').html_safe %></span>
+  <br>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(@user.errors.count, "error") %>.
+      </div>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li>* <%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.text_field :name , :placeholder => "Name"%>
+
+  <%= f.text_field :email , :placeholder => "Email Address"%>
+  
+  <%= f.text_field :phoneNumber , :placeholder => "Phone Number"%>
+  
+  <%= f.select :provider, options_for_select(%w[AT&T T-Mobile Verizon]), :include_blank => "Select Cellular Provider",:selected => nil%>
+
+  <%= f.password_field :password , :placeholder => "Password"%>
+
+  <%= f.password_field :password_confirmation , :placeholder => "Confirmation"%>
+  </br>
+  <%= f.submit "Create my account", class: "btn btn-primary" %>
+  
+<% end %>

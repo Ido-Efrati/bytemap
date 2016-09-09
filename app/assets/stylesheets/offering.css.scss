@@ -1,0 +1,32 @@
+// Place all the styles related to the offering controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.all{
+    width: 200px;
+    height: 300px;
+}
+
+.description{
+	max-width:90px;
+}
+
+.viewOfferings td{
+
+	width: 50px;
+	align:top;
+	max-width: 50px;
+	max-height: 50px;
+}
+
+
+.wordwrap{
+
+		white-space: pre-wrap;      /* CSS3 */   
+	white-space: -moz-pre-wrap; /* Firefox */    
+	white-space: -pre-wrap;     /* Opera <7 */   
+	white-space: -o-pre-wrap;   /* Opera 7 */    
+	word-wrap: break-word;      /* IE */ 
+}
+

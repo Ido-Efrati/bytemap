@@ -1,0 +1,10 @@
+== README
+
+Our app is located at
+http://fierce-cove-4801.herokuapp.com/
+
+Our presentation:
+https://www.youtube.com/watch?v=FhuI5n5z3N0
+
+Our design doc has been updated and include a list of all of our features.
+Team and individual reflections can be found under docs as well

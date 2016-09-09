@@ -1,0 +1,39 @@
+/*
+  give the user an acknowledgment that he or she voted on an all gone offering
+*/
+function acknowledge_vote_submission(selector){
+        var update_column = $("#"+selector).parent();
+        update_column.html("thanks!");
+        update_column.addClass('vote');
+}
+
+/*
+  flash the user with a notification. String my change based on the notification
+*/
+function notify_user(str){
+        $(".notice").html(str);
+}
+
+//reload the page if this location is now empty
+<% if @emptylocation == true  %>
+	notify_user("Thanks for your input! This location now has no more Bytes.");
+	setTimeout(function(){
+		location.reload(false);
+	}, 2000);
+<% end %>
+
+//reload the page if the offering no longer exists
+<% if @offering_exists == false  %>
+	notify_user("Thanks for your input! This Byte has been removed.");
+	setTimeout(function(){
+		location.reload(false);
+	}, 2000);
+<% end %>
+
+// hide voting interface & acknowledge voting submission 
+<%if @alreadyvoted == true %>
+	acknowledge_vote_submission( "<%=  @offering.id %>");
+<% end %>
+
+
+

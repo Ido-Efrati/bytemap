@@ -1,0 +1,24 @@
+<br>
+<span style="display:inline;">
+	<%= text_field_tag "query", nil, :placeholder => "i.e. Stata or 32", :id => "queryField" %>
+    <%= submit_tag "Search", :id => "search" , :class => "btn btn-primary " %>
+	<span class="notice" style="display:inline;"></span>
+	<span id="flash" style="display:inline;"><%= raw render(:partial => 'layouts/partials/flash').html_safe %></span>
+	<div id="accordion">
+	  <h3>Click for All Available Bytes!</h3>
+	  <div id="accordioncontent">
+	  	<%= render partial: 'activities/newsfeed', locals: {:@activities => PublicActivity::Activity.order("created_at desc")}%>
+	  </div>
+	</div>
+</span>
+
+<div id="mapcontent">
+	<%= render partial: 'locations/map.html.erb'%>
+</div>
+
+<script type="text/javascript">
+    <%= render "locations/search.js" %>
+    <%= render "locations/gmap.js" %>
+    <%= render "locations/refresh.js" %>
+    <%= render "locations/autocomplete.js" %> 
+</script>

@@ -1,0 +1,4 @@
+//reloads content of the map and newsfeed on asynchronous update calls
+$("#map").html("<%= escape_javascript(render(:partial =>'map')) %>")
+$("#accordioncontent").html("<%= escape_javascript(render(:partial => 'activities/newsfeed', :locals => {:@activities => PublicActivity::Activity.order("created_at desc")}))%>")
+<%= render "gmap.js" %>

@@ -1,0 +1,30 @@
+<%= form_for(@subscription) do |f| %>
+  <% if @subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+      <ul>
+      <% @subscription.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.hidden_field :mitlocation_id, :value => @location.customid %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <div class="actions">
+    <%if Subscription.subscribed(@location.customid, current_user.id)%>
+      <% if current_user.can_subscribe?()%> <!-- user can subscribe and has a phone number -->
+        <%= f.submit "subscribe", :class => "submit_byte btn btn-primary" %>
+      <%else%> <!-- can subscribe but does not have a phone number-->
+        <%= link_to "Enable Texting!", edit_user_path(current_user), :class => "submit_byte btn btn-primary",:id => "unsubscribe" %>
+      <%end%>
+    <%else%> <!-- already subscribed , can unsubscribe-->
+      <%=link_to 'unsubscribe', Subscription.where(mitlocation_id:@location.customid , user_id: current_user.id).first,:id => "unsubscribe", :class => "btn btn-primary", method: :delete, data: { confirm: 'Are you sure?' }  %>
+    <%end%>  
+  </div>
+<% end %>

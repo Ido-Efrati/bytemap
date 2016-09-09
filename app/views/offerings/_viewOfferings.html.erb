@@ -1,0 +1,23 @@
+<div class="viewOfferings">
+  <table class="table">
+      <tr>
+        <th>Where</th>
+        <th>What</th>
+        <th>Give an update</th>
+      </tr>
+
+    <% @location.offerings.each do |offering| %>
+      <tr>
+        <td><div class="description wordwrap"><%= offering.sub_location %></div></td>
+        <td><div class = "description wordwrap"><%= offering.description %></div></td>
+        <!-- show interface for voting 'all gone' only if user hasn't already voted on this offering before -->
+       <%if @vote_history.index(offering.id) == nil %>
+        <td><%= link_to "Click if all gone", offering,  :remote => true, :id => "#{offering.id}", :class => "vote_destroy", :format => :js ,method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       <% else %>
+          <td>(already gave update)</td>
+       <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

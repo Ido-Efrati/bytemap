@@ -1,0 +1,33 @@
+<center>
+	</br>
+	<h1>Edit Profile</h1>
+
+	<%= form_for(@user) do |f| %>
+	  <% if @user.errors.any? %>
+	    <div id="error_explanation">
+
+	      <div class="alert alert-error">
+	        The form contains <%= pluralize(@user.errors.count, "error") %>.
+	      </div>
+
+	      <ul>
+	      <% @user.errors.full_messages.each do |msg| %>
+	        <li>* <%= msg %></li>
+	      <% end %>
+	      </ul>
+
+	    </div>
+	  <% end %>
+
+	  <p>Note: you must add a Phone Number and indicate your Cellular Provider to subscribe via text message.</p>
+	  <p>Deleting your Phone Number will retain your subscriptions, but terminate your notifications</p>
+	  
+	  <%= f.text_field :name , :placeholder => "Name"%>
+	  <%= f.text_field :phoneNumber , :placeholder => "Phone Number", class:"number"%>
+      <%= f.select :provider, options_for_select(%w[AT&T T-Mobile Verizon]), :include_blank => "Select Cellular Provider",:selected => nil%>
+	  
+	  <p>For security reasons, you must verify your email address to change your password. If you would like to change it <%= link_to "click here.", new_password_reset_path %></p>
+
+	  <%= f.submit "Update my Information", class: "btn btn-primary" %>
+	<% end %>
+</center>

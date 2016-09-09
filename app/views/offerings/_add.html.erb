@@ -1,0 +1,31 @@
+<h2 id="header"><%= @location.get_title_description()%></h2>
+
+<div class = "all" id="tabs">
+  <ul class="nav nav-tabs" id="tabOptions">
+    <% if signed_in? %>
+      <li class="active"><a data-toggle="tab" href="#tabs-1">View Bytes</a></li>
+      <li class=""><a data-toggle="tab" href="#tabs-2">Post a Byte</a></li>
+      <%= render partial: "subscriptions/form", locals: {location: @location}%>
+    <% else %>
+      <li class="active"><a data-toggle="tab" href="#tabs-1">View Bytes</a></li>
+    <% end %>    
+  </ul>
+
+  <center>
+    <div class="tab-content" id="myTabContent">
+      <% if signed_in? %>
+        <div id="tabs-1"  class="tab-pane fade active in">
+          <%= render partial: "offerings/viewOfferings"%>
+        </div>
+        <div id="tabs-2" class="tab-pane fade">
+          <%= render partial: "offerings/createNewByteTab", locals: {offering: @offering} %>
+        </div>
+      <% else %>
+        <div id="tabs-1"  class="tab-pane fade active in">
+          <%= render partial: "offerings/viewOfferings"%>
+        </div>
+      <% end %>
+    </div>
+  </center>
+</div>
+

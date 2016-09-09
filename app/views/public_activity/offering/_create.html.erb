@@ -1,0 +1,14 @@
+<% if activity.trackable %>
+	<div class="item">
+		<b><%= activity.trackable.description %></b> at 
+		<% location = Location.find(activity.trackable.location_id) %>
+		<b>Building <%=  location.building_number %> - <%=  location.title %></b>
+	</div>
+	<div class="timestamp">
+		Posted by
+		<% if activity.owner%>
+			<b><%= activity.owner.name %></b>,
+		<% end %>
+		<%= event_time_format activity.trackable.created_at%>
+	</div>
+<% end %>

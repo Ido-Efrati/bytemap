@@ -1,0 +1,51 @@
+// Place all the styles related to the about controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.top-image {
+    margin-top:0px;
+    text-align: center;
+    background-color: #000008;
+    background-image: url('images/bytemapBanner.png');
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 10px; 
+      overflow: hidden; 
+    }
+
+    .featurette-image.pull-left {
+      margin-right: 40px;
+
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    .featurette-heading {
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+      color:black;
+    }
+    .color{
+      color:black;
+    }
+
+    .paragraphStyle{
+         font-size: 16px;
+    }
+
+    .bodyMargin{
+    	margin-left:100px;
+    	margin-right:100px;
+    }
+
